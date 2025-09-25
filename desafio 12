@@ -1,0 +1,45 @@
+# Desafio 12: Agenda de Contatos Simples
+
+agenda = {}
+
+print("=== Agenda de Contatos ===")
+while True:
+    print("\nMenu:")
+    print("1 - Adicionar contato")
+    print("2 - Pesquisar contato")
+    print("3 - Listar contatos")
+    print("4 - Remover contato")
+    print("5 - Sair")
+
+    opcao = input("Escolha: ")
+
+    if opcao == "1":
+        nome = input("Nome: ")
+        telefone = input("Telefone: ")
+        agenda[nome] = telefone
+        print("✅ Contato adicionado.")
+    elif opcao == "2":
+        nome = input("Digite o nome para pesquisar: ")
+        if nome in agenda:
+            print(f"📞 {nome}: {agenda[nome]}")
+        else:
+            print("❌ Contato não encontrado.")
+    elif opcao == "3":
+        if not agenda:
+            print("📂 Nenhum contato.")
+        else:
+            print("\n📋 Contatos:")
+            for nome, tel in agenda.items():
+                print(f"{nome}: {tel}")
+    elif opcao == "4":
+        nome = input("Nome do contato para remover: ")
+        if nome in agenda:
+            del agenda[nome]
+            print("❌ Contato removido.")
+        else:
+            print("⚠️ Contato não encontrado.")
+    elif opcao == "5":
+        print("👋 Encerrando agenda.")
+        break
+    else:
+        print("⚠️ Opção inválida!")
