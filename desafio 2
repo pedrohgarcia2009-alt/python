@@ -1,0 +1,34 @@
+# Desafio 02: Contador Simples
+
+def mostrar_menu():
+    print("\n=== Menu do Contador ===")
+    print("➕ '+' → incrementar")
+    print("➖ '-' → decrementar")
+    print("🔄 'reset' → voltar a 0")
+    print("✖ 'dobrar' → multiplicar por 2")
+    print("🚪 'sair' → encerrar")
+
+contador = 0
+print("=== Contador Simples ===")
+mostrar_menu()
+
+while True:
+    comando = input("\nDigite um comando: ").strip().lower()
+
+    if comando == "+":
+        contador += 1
+    elif comando == "-":
+        contador -= 1
+    elif comando == "reset":
+        contador = 0
+    elif comando == "dobrar":
+        contador *= 2
+    elif comando == "sair":
+        print("👋 Encerrando o programa. Até mais!")
+        break
+    else:
+        print("⚠️ Comando inválido!")
+        mostrar_menu()
+        continue
+
+    print(f"📊 Valor atual do contador: {contador}")
