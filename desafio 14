@@ -1,0 +1,40 @@
+# Desafio 14: Jogo da Forca
+import random
+
+def escolher_palavra():
+    palavras = ["python", "programacao", "desafio", "computador", "algoritmo"]
+    return random.choice(palavras)
+
+def mostrar_estado(palavra, letras_certas):
+    return " ".join([letra if letra in letras_certas else "_" for letra in palavra])
+
+palavra = escolher_palavra()
+tentativas = 6
+letras_certas = set()
+letras_erradas = set()
+
+print("=== Jogo da Forca ===")
+while tentativas > 0:
+    print(f"\nPalavra: {mostrar_estado(palavra, letras_certas)}")
+    print(f"❌ Letras erradas: {', '.join(letras_erradas) if letras_erradas else 'nenhuma'}")
+    print(f"❤️ Vidas restantes: {tentativas}")
+
+    letra = input("Digite uma letra: ").lower()
+    if not letra.isalpha() or len(letra) != 1:
+        print("⚠️ Digite apenas uma letra válida.")
+        continue
+
+    if letra in palavra:
+        letras_certas.add(letra)
+        if all(l in letras_certas for l in palavra):
+            print(f"\n🎉 Você venceu! A palavra era '{palavra}'.")
+            break
+    else:
+        letras_erradas.add(letra)
+        tentativas -= 1
+
+if tentativas == 0:
+    print(f"\n💀 Você perdeu! A palavra era '{palavra}'.")
+
+
+
