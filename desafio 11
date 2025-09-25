@@ -1,0 +1,56 @@
+# Desafio 11: Lista de Tarefas no Console
+
+def mostrar_tarefas(tarefas: list):
+    if not tarefas:
+        print("📂 Nenhuma tarefa cadastrada.")
+    else:
+        print("\n📌 Lista de tarefas:")
+        for i, t in enumerate(tarefas, start=1):
+            print(f"{i}. {t}")
+
+tarefas = []
+print("=== Lista de Tarefas ===")
+
+while True:
+    print("\nMenu:")
+    print("1 - Adicionar tarefa")
+    print("2 - Listar tarefas")
+    print("3 - Remover tarefa")
+    print("4 - Marcar tarefa como concluída")
+    print("5 - Sair")
+
+    opcao = input("Escolha: ")
+
+    if opcao == "1":
+        tarefa = input("Digite a nova tarefa: ")
+        tarefas.append(tarefa)
+        print("✅ Tarefa adicionada.")
+    elif opcao == "2":
+        mostrar_tarefas(tarefas)
+    elif opcao == "3":
+        mostrar_tarefas(tarefas)
+        try:
+            idx = int(input("Digite o número da tarefa para remover: ")) - 1
+            if 0 <= idx < len(tarefas):
+                removida = tarefas.pop(idx)
+                print(f"❌ Tarefa removida: {removida}")
+            else:
+                print("⚠️ Número inválido.")
+        except ValueError:
+            print("⚠️ Digite um número válido.")
+    elif opcao == "4":
+        mostrar_tarefas(tarefas)
+        try:
+            idx = int(input("Digite o número da tarefa concluída: ")) - 1
+            if 0 <= idx < len(tarefas):
+                tarefas[idx] = "[✔] " + tarefas[idx]
+                print("🏆 Tarefa concluída!")
+            else:
+                print("⚠️ Número inválido.")
+        except ValueError:
+            print("⚠️ Digite um número válido.")
+    elif opcao == "5":
+        print("👋 Programa encerrado.")
+        break
+    else:
+        print("⚠️ Opção inválida!")
