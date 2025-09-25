@@ -1,0 +1,33 @@
+# Desafio 13: Calculadora de IMC com Funções
+
+def calcular_imc(peso: float, altura: float) -> float:
+    return peso / (altura ** 2)
+
+def classificar_imc(imc: float) -> str:
+    if imc < 18.5:
+        return "Abaixo do peso"
+    elif imc < 24.9:
+        return "Peso normal"
+    elif imc < 29.9:
+        return "Sobrepeso"
+    else:
+        return "Obesidade"
+
+def entrada_positiva(msg: str) -> float:
+    while True:
+        try:
+            valor = float(input(msg))
+            if valor > 0:
+                return valor
+            print("⚠️ Digite um número positivo.")
+        except ValueError:
+            print("⚠️ Entrada inválida.")
+
+print("=== Calculadora de IMC ===")
+peso = entrada_positiva("Digite seu peso (kg): ")
+altura = entrada_positiva("Digite sua altura (m): ")
+
+imc = calcular_imc(peso, altura)
+print(f"\n📊 Seu IMC é {imc:.2f} → {classificar_imc(imc)}")
+
+
