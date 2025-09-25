@@ -1,0 +1,18 @@
+# Desafio 04: Gerador de Citações Inspiradoras
+import random
+
+def gerar_citacao():
+    citacoes = [
+        ("A persistência é o caminho do êxito.", "Charles Chaplin"),
+        ("A vida é 10% o que acontece a você e 90% como você reage a isso.", "Charles Swindoll"),
+        ("A simplicidade é o último grau de sofisticação.", "Leonardo da Vinci"),
+        ("Acredite em si próprio e chegará um dia em que os outros não terão outra escolha senão acreditar com você.", "Cynthia Kersey"),
+        ("Se você não mudar a direção, pode acabar chegando onde está indo.", "Lao Tsé"),
+    ]
+    return random.choice(citacoes)
+
+print("=== Gerador de Citações Inspiradoras ===")
+while True:
+    input("\nPressione ENTER para receber uma citação (ou CTRL+C para sair) ")
+    texto, autor = gerar_citacao()
+    print(f"\n💡 \"{texto}\"\n   — {autor}")
