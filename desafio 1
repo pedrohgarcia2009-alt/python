@@ -1,0 +1,24 @@
+# Desafio 01: Calculadora de Gorjetas (Melhorado)
+
+def calcular_gorjeta(conta: float, porcentagem: float) -> tuple[float, float]:
+    """Calcula o valor da gorjeta e o total a pagar."""
+    gorjeta = conta * (porcentagem / 100)
+    total = conta + gorjeta
+    return gorjeta, total
+
+def entrada_float(mensagem: str) -> float:
+    """Pede ao usuário um número decimal e valida a entrada."""
+    while True:
+        try:
+            return float(input(mensagem))
+        except ValueError:
+            print("⚠️ Entrada inválida! Digite apenas números.")
+
+print("=== Calculadora de Gorjetas ===")
+conta = entrada_float("Digite o valor da conta: R$ ")
+porcentagem = entrada_float("Digite a porcentagem da gorjeta (%): ")
+
+gorjeta, total = calcular_gorjeta(conta, porcentagem)
+
+print(f"\n💰 Gorjeta: R$ {gorjeta:.2f}")
+print(f"💳 Total a pagar: R$ {total:.2f}")
