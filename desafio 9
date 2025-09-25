@@ -1,0 +1,25 @@
+# Desafio 09: Analisador de Texto Simples
+
+def analisar_texto(frase: str):
+    palavras = frase.split()
+    qtd_caracteres = len(frase)
+    qtd_palavras = len(palavras)
+    return qtd_caracteres, qtd_palavras
+
+def contar_frequencia(frase: str) -> dict:
+    palavras = frase.lower().split()
+    freq = {}
+    for p in palavras:
+        freq[p] = freq.get(p, 0) + 1
+    return freq
+
+print("=== Analisador de Texto ===")
+frase = input("Digite uma frase: ")
+
+caracteres, palavras = analisar_texto(frase)
+print(f"\n📊 Total de caracteres: {caracteres}")
+print(f"📊 Total de palavras: {palavras}")
+
+print("\n📌 Frequência de palavras:")
+for palavra, qtd in contar_frequencia(frase).items():
+    print(f"'{palavra}': {qtd}")
