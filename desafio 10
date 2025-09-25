@@ -1,0 +1,23 @@
+# Desafio 10: Cronômetro de Terminal
+import time
+
+def formatar_tempo(segundos: int) -> str:
+    minutos = segundos // 60
+    segundos = segundos % 60
+    return f"{minutos:02d}:{segundos:02d}"
+
+print("=== Cronômetro de Terminal ===")
+try:
+    limite = int(input("Digite o tempo limite em segundos (0 para infinito): "))
+except ValueError:
+    limite = 0
+
+segundos = 0
+while True:
+    print(f"\r⏱ {formatar_tempo(segundos)}", end="", flush=True)
+    time.sleep(1)
+    segundos += 1
+    if limite and segundos > limite:
+        break
+
+print("\n⏹ Tempo encerrado!")
