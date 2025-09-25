@@ -1,4 +1,4 @@
-# Desafio 01: Calculadora de Gorjetas (Melhorado)
+# Desafio 01: Calculadora de Gorjetas
 
 def calcular_gorjeta(conta: float, porcentagem: float) -> tuple[float, float]:
     """Calcula o valor da gorjeta e o total a pagar."""
