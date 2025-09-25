@@ -1,0 +1,37 @@
+# Desafio 07: Gerador de Senhas Aleatórias 
+import random
+import string
+
+def gerar_senha(tamanho: int, usar_numeros=True, usar_maiusculas=True, usar_simbolos=True) -> str:
+    caracteres = string.ascii_lowercase
+    if usar_maiusculas:
+        caracteres += string.ascii_uppercase
+    if usar_numeros:
+        caracteres += string.digits
+    if usar_simbolos:
+        caracteres += string.punctuation
+
+    senha = ''.join(random.choice(caracteres) for _ in range(tamanho))
+    return senha
+
+print("=== Gerador de Senhas ===")
+while True:
+    try:
+        tamanho = int(input("\nDigite o comprimento da senha: "))
+        if tamanho < 4:
+            print("⚠️ Senha deve ter pelo menos 4 caracteres.")
+            continue
+    except ValueError:
+        print("⚠️ Digite um número válido.")
+        continue
+
+    incluir_num = input("Incluir números? (s/n): ").lower().startswith("s")
+    incluir_mai = input("Incluir maiúsculas? (s/n): ").lower().startswith("s")
+    incluir_sim = input("Incluir símbolos? (s/n): ").lower().startswith("s")
+
+    senha = gerar_senha(tamanho, incluir_num, incluir_mai, incluir_sim)
+    print(f"\n🔐 Sua senha gerada é: {senha}")
+
+    if input("\nGerar outra? (s/n): ").lower().startswith("n"):
+        print("👋 Encerrado.")
+        break
