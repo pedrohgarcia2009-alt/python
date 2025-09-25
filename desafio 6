@@ -1,0 +1,40 @@
+# Desafio 06: Pedra, Papel e Tesoura 
+import random
+
+def escolher_computador():
+    return random.choice(["pedra", "papel", "tesoura"])
+
+def decidir_vencedor(jogador, computador):
+    if jogador == computador:
+        return "🤝 Empate!"
+    elif (jogador == "pedra" and computador == "tesoura") or \
+         (jogador == "tesoura" and computador == "papel") or \
+         (jogador == "papel" and computador == "pedra"):
+        return "🎉 Você venceu!"
+    else:
+        return "💻 O computador venceu!"
+
+placar = {"jogador": 0, "computador": 0, "empates": 0}
+
+print("=== Pedra, Papel e Tesoura ===")
+while True:
+    jogador = input("\nDigite pedra, papel ou tesoura (ou 'sair' para encerrar): ").lower()
+    if jogador == "sair":
+        print("\n🏆 Placar final:", placar)
+        break
+    if jogador not in ["pedra", "papel", "tesoura"]:
+        print("⚠️ Escolha inválida!")
+        continue
+
+    computador = escolher_computador()
+    print(f"Você escolheu: {jogador} | Computador: {computador}")
+
+    resultado = decidir_vencedor(jogador, computador)
+    print(resultado)
+
+    if "venceu!" in resultado:
+        placar["jogador"] += 1
+    elif "computador venceu" in resultado:
+        placar["computador"] += 1
+    else:
+        placar["empates"] += 1
