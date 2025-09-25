@@ -1,0 +1,26 @@
+# Desafio 15: Conversor de Moedas
+
+taxas = {
+    "USD": 1.0,     # moeda base
+    "BRL": 5.25,
+    "EUR": 0.95,
+    "JPY": 148.50
+}
+
+def converter(valor: float, origem: str, destino: str) -> float:
+    if origem not in taxas or destino not in taxas:
+        raise ValueError("Moeda inválida.")
+    valor_usd = valor / taxas[origem]
+    return valor_usd * taxas[destino]
+
+print("=== Conversor de Moedas ===")
+try:
+    valor = float(input("Digite o valor: "))
+    origem = input("Moeda de origem (USD, BRL, EUR, JPY): ").upper()
+    destino = input("Moeda de destino (USD, BRL, EUR, JPY): ").upper()
+
+    convertido = converter(valor, origem, destino)
+    print(f"\n💱 {valor:.2f} {origem} = {convertido:.2f} {destino}")
+
+except ValueError as e:
+    print(f"⚠️ Erro: {e}")
